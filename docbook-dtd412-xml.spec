@@ -11,6 +11,7 @@ License:	Free
 Group:		Applications/Publishing/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
+# Source0-md5:	0d5a4a999a2d7b2e77a46bd069301caf
 BuildRequires:	unzip
 BuildRequires:	rpm-build >= 4.0.2-94
 PreReq:		libxml2
