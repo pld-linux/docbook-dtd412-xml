@@ -12,9 +12,10 @@ Group(de):	Applikationen/Publizieren/XML
 Group(pl):	Aplikacje/Publikowanie/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
+BuildRequires:	unzip
 Requires:	sgml-common >= 0.5
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 OASIS DocBook DTD for technical documentation.
