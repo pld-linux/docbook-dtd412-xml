@@ -6,7 +6,7 @@ Summary(pl):	XML/SGML DocBook DTD 4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	9
+Release:	10
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
@@ -56,7 +56,7 @@ grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{sgmlcat_file}
 
 %xmlcat_add_rewrite \
 	http://www.oasis-open.org/docbook/xml/%{ver} \
-	file://%{dtd_path} \
+	file://%{dtdpath} \
 	$RPM_BUILD_ROOT%{xmlcat_file}
 
 grep PUBLIC docbook.cat|grep -v ISO |sed 's/^/xmlcatalog --noout --add /;s/PUBLIC/public/;s=$= '$RPM_BUILD_ROOT'/%{xmlcat_file}=' |sh
