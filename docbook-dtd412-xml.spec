@@ -7,7 +7,6 @@ Summary(pl):	XML/SGML DocBook DTD 4.1.2
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
 Release:	11
-Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
 URL:		http://www.oasis-open.org/docbook/
@@ -24,7 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	dtd_path		%{_datadir}/sgml/docbook/xml-dtd-%{ver}
 %define	xmlcat_file		%{dtd_path}/catalog.xml
-%define	sgmlcat_file	%{dtd_path}/catalog
+%define	sgmlcat_file		%{dtd_path}/catalog
 
 %description
 DocBook is an XML/SGML vocabulary particularly well suited to books
@@ -59,26 +58,27 @@ grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{sgmlcat_file}
 	file://%{dtd_path} \
 	$RPM_BUILD_ROOT%{xmlcat_file}
 
-grep PUBLIC docbook.cat|grep -v ISO |sed 's/^/xmlcatalog --noout --add /;s/PUBLIC/public/;s=$= '$RPM_BUILD_ROOT'/%{xmlcat_file}=' |sh
+grep PUBLIC docbook.cat|grep -v ISO | \
+sed 's/^/xmlcatalog --noout --add /;s/PUBLIC/public/;s=$= '$RPM_BUILD_ROOT'/%{xmlcat_file}=' | sh
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
 if ! grep -q /etc/sgml/xml-docbook-%{ver}.cat /etc/sgml/catalog ; then
-    %sgmlcat_add /etc/sgml/xml-docbook-%{ver}.cat %{sgmlcat_file}
+	%sgmlcat_add /etc/sgml/xml-docbook-%{ver}.cat %{sgmlcat_file}
 
 fi
 if ! grep -q %{dtd_path}/catalog.xml /etc/xml/catalog ; then
-    %xmlcat_add %{xmlcat_file}
+	%xmlcat_add %{xmlcat_file}
 
 fi
 
 %preun
 if [ "$1" = "0" ] ; then
-    %sgmlcat_del /etc/sgml/xml-docbook-%{ver}.cat %{sgmlcat_file}
+	%sgmlcat_del /etc/sgml/xml-docbook-%{ver}.cat %{sgmlcat_file}
 
-    %xmlcat_del %{xmlcat_file}
+	%xmlcat_del %{xmlcat_file}
 
 fi
 
