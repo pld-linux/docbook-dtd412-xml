@@ -22,8 +22,8 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	dtdpath			%{_datadir}/sgml/docbook/xml-dtd-%{ver}
-%define	xmlcat_file		%{dtd_path}/catalog.xml
-%define	sgmlcat_file	%{dtd_path}/catalog
+%define	xmlcat_file		%{dtdpath}/catalog.xml
+%define	sgmlcat_file	%{dtdpath}/catalog
 
 %description
 DocBook is an XML/SGML vocabulary particularly well suited to books
@@ -47,7 +47,7 @@ install -d $RPM_BUILD_ROOT%{dtdpath}
 install *.{dtd,mod} $RPM_BUILD_ROOT%{dtdpath}
 cp -a ent $RPM_BUILD_ROOT%{dtdpath}
 
-%sgmcat_fix >>$RPM_BUILD_ROOT%{sgmlcat_file}
+%sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file}
 
 grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{sgmlcat_file}
 
