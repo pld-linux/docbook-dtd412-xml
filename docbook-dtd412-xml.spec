@@ -1,5 +1,5 @@
 Summary:	Davenport Group DocBook DTD for technical documentation
-Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej 
+Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej
 %define ver	4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
@@ -18,14 +18,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 OASIS DocBook DTD for technical documentation.
 
-%description -l pl 
+%description -l pl
 DocBook DTD jest zestawem definicji dokumentów przeznaczonych do
 tworzenia dokumentacji programistycznej. Stosowany jest do pisania
 podrêczników systemowych, instrukcji technicznych jak i wielu innych
 ciekawych rzeczy.
 
 %prep
-%setup -q -c -T 
+%setup -q -c -T
 unzip -qa %{SOURCE0}
 chmod -R a+rX *
 
@@ -70,5 +70,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz 
+%doc *.gz
 %{_datadir}/sgml/docbook/*
