@@ -6,14 +6,17 @@ Summary(pl):	XML/SGML DocBook DTD 4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	7
+Release:	8
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 BuildRequires:	unzip
+PreReq:		libxml2
+PreReq:		sgml-common
 Requires(post,preun):	/usr/bin/xmlcatalog
+Requires(post,preun):	/usr/bin/install-catalog
 Requires:	libxml2-progs >= 2.4.17-6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
