@@ -8,8 +8,6 @@ Release:	3
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
-Group(de):	Applikationen/Publizieren/XML
-Group(pl):	Aplikacje/Publikowanie/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 BuildRequires:	unzip
