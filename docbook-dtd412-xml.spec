@@ -22,9 +22,9 @@ Requires:	libxml2-progs >= 2.4.17-6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	dtdpath			%{_datadir}/sgml/docbook/xml-dtd-%{ver}
-%define	xmlcat_file		%{dtdpath}/catalog.xml
-%define	sgmlcat_file	%{dtdpath}/catalog
+%define	dtd_path		%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+%define	xmlcat_file		%{dtd_path}/catalog.xml
+%define	sgmlcat_file	%{dtd_path}/catalog
 
 %description
 DocBook is an XML/SGML vocabulary particularly well suited to books
@@ -43,10 +43,10 @@ chmod -R a+rX *
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{dtdpath}
+install -d $RPM_BUILD_ROOT%{dtd_path}
 
-install *.{dtd,mod} $RPM_BUILD_ROOT%{dtdpath}
-cp -a ent $RPM_BUILD_ROOT%{dtdpath}
+install *.{dtd,mod} $RPM_BUILD_ROOT%{dtd_path}
+cp -a ent $RPM_BUILD_ROOT%{dtd_path}
 
 %docbook_sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file}
 
@@ -56,7 +56,7 @@ grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{sgmlcat_file}
 
 %xmlcat_add_rewrite \
 	http://www.oasis-open.org/docbook/xml/%{ver} \
-	file://%{dtdpath} \
+	file://%{dtd_path} \
 	$RPM_BUILD_ROOT%{xmlcat_file}
 
 grep PUBLIC docbook.cat|grep -v ISO |sed 's/^/xmlcatalog --noout --add /;s/PUBLIC/public/;s=$= '$RPM_BUILD_ROOT'/%{xmlcat_file}=' |sh
@@ -69,7 +69,7 @@ if ! grep -q /etc/sgml/xml-docbook-%{ver}.cat /etc/sgml/catalog ; then
     %sgmlcat_add /etc/sgml/xml-docbook-%{ver}.cat %{sgmlcat_file}
 
 fi
-if ! grep -q %{dtdpath}/catalog.xml /etc/xml/catalog ; then
+if ! grep -q %{dtd_path}/catalog.xml /etc/xml/catalog ; then
     %xmlcat_add %{xmlcat_file}
 
 fi
@@ -85,4 +85,4 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc *.txt ChangeLog
-%{dtdpath}
+%{dtd_path}
