@@ -4,7 +4,7 @@ Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	5
+Release:	6
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
