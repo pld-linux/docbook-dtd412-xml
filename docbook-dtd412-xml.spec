@@ -1,7 +1,7 @@
 # TODO:
 # - use XML ISO entities from sgml-common
-Summary:    XML/SGML DocBook DTD 4.1.2
-Summary(pl):    XML/SGML DocBook DTD 4.1.2
+Summary:	XML/SGML DocBook DTD 4.1.2
+Summary(pl):	XML/SGML DocBook DTD 4.1.2
 %define ver	4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
@@ -18,17 +18,18 @@ Requires:	libxml2-progs >= 2.4.17-6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		dtdpath	%{_datadir}/sgml/docbook/xml-dtd-%{ver}
+%define		dtdpath		%{_datadir}/sgml/docbook/xml-dtd-%{ver}
 
 %description
-DocBook is an XML/SGML vocabulary particularly well suited to books and
-papers about computer hardware and software (though it is by no means
-limited to only these applications).
+DocBook is an XML/SGML vocabulary particularly well suited to books
+and papers about computer hardware and software (though it is by no
+means limited to only these applications).
 
 %description -l pl
-DocBook DTD jest zestawem definicji dokumentów XML/SGML przeznaczonych do
-tworzenia dokumentacji technicznej. Stosowany jest do pisania podrêczników
-systemowych, instrukcji jak i wielu innych ciekawych rzeczy.
+DocBook DTD jest zestawem definicji dokumentów XML/SGML przeznaczonych
+do tworzenia dokumentacji technicznej. Stosowany jest do pisania
+podrêczników systemowych, instrukcji jak i wielu innych ciekawych
+rzeczy.
 
 %prep
 %setup -q -c
