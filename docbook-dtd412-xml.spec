@@ -11,6 +11,7 @@ Group:		Applications/Publishing/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 BuildRequires:	unzip
+Requires(post,postun):	/usr/bin/xmlcatalog
 Requires:	libxml2-progs >= 2.4.17-6
 Provides:	%{name}-xmlcatalog
 BuildArch:	noarch
