@@ -4,7 +4,7 @@ Summary(pl):	DocBook DTD przeznaczone do pisania dokumentacji technicznej
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	2
+Release:	3
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
@@ -48,7 +48,7 @@ cat <<EOF >>$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/xml-dtd-%{ver}/catalog
 DTDDECL "-//OASIS//DTD DocBook XML V%{ver}//EN" "../../xml.dcl"
   -- hacks for opensp --
 SYSTEM "file://%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd" "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
-SYSTEM "http://docbook.org/xml/%{ver}/docbookx.dtd"                  "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
+SYSTEM "http://www.oasis-open.org/docbook/xml/%{ver}/docbookx.dtd"                  "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
 
 EOF
 
