@@ -37,7 +37,7 @@ chmod -R a+rX *
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{dtdpath}
 
-install *.{cat,dtd,mod} $RPM_BUILD_ROOT%{dtdpath}
+install *.{dtd,mod} $RPM_BUILD_ROOT%{dtdpath}
 cp -a ent $RPM_BUILD_ROOT%{dtdpath}
 
 # associate default declaration for xml
@@ -50,6 +50,10 @@ SGMLDECL "../../xml.dcl"
   -- hacks for opensp --
 SYSTEM "file://%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd" "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
 SYSTEM "http://www.oasis-open.org/docbook/xml/%{ver}/docbookx.dtd"                  "%{_datadir}/sgml/docbook/xml-dtd-%{ver}/docbookx.dtd"
+
+EOF
+
+grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{dtdpath}/catalog
 
 xmlcatalog --noout --create $RPM_BUILD_ROOT%{dtdpath}/catalog.xml
 
@@ -65,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 if ! grep -q /etc/sgml/xml-docbook-%{ver}.cat /etc/sgml/catalog ; then
-	/usr/bin/install-catalog --add /etc/sgml/xml-docbook-%{ver}.cat %{dtdpath}/docbook.cat > /dev/null
+	/usr/bin/install-catalog --add /etc/sgml/xml-docbook-%{ver}.cat %{dtdpath}/catalog > /dev/null
 fi
 if ! grep -q %{dtdpath}/catalog.xml /etc/xml/catalog ; then
 	/usr/bin/xmlcatalog --noout --add nextCatalog "" %{dtdpath}/catalog.xml /etc/xml/catalog
@@ -73,7 +77,7 @@ fi
 
 %preun
 if [ "$1" = "0" ] ; then
-	/usr/bin/install-catalog --remove /etc/sgml/xml-docbook-%{ver}.cat %{dtdpath}/docbook.cat > /dev/null
+	/usr/bin/install-catalog --remove /etc/sgml/xml-docbook-%{ver}.cat %{dtdpath}/catalog > /dev/null
 	/usr/bin/xmlcatalog --noout --del %{dtdpath}/catalog.xml /etc/xml/catalog
 fi
 
