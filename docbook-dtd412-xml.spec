@@ -6,7 +6,7 @@ Summary(pl):	XML/SGML DocBook DTD 4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	10
+Release:	11
 Vendor:		OASIS
 License:	Free
 Group:		Applications/Publishing/XML
@@ -48,7 +48,7 @@ install -d $RPM_BUILD_ROOT%{dtd_path}
 install *.{dtd,mod} $RPM_BUILD_ROOT%{dtd_path}
 cp -a ent $RPM_BUILD_ROOT%{dtd_path}
 
-%docbook_sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file}
+%docbook_sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file} %{ver}
 
 grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{sgmlcat_file}
 
