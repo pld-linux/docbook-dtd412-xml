@@ -13,6 +13,7 @@ Group:		Applications/Publishing/XML
 URL:		http://www.oasis-open.org/docbook/
 Source0:	http://www.oasis-open.org/docbook/xml/%{ver}/docbkx%{sver}.zip
 BuildRequires:	unzip
+BuildRequires:	rpm-build >= 4.0.2-94
 PreReq:		libxml2
 PreReq:		sgml-common
 Requires(post,preun):	/usr/bin/xmlcatalog
@@ -47,7 +48,7 @@ install -d $RPM_BUILD_ROOT%{dtdpath}
 install *.{dtd,mod} $RPM_BUILD_ROOT%{dtdpath}
 cp -a ent $RPM_BUILD_ROOT%{dtdpath}
 
-%sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file}
+%docbook_sgmlcat_fix $RPM_BUILD_ROOT%{sgmlcat_file}
 
 grep -v 'ISO ' docbook.cat >> $RPM_BUILD_ROOT%{sgmlcat_file}
 
