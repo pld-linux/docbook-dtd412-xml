@@ -1,7 +1,7 @@
 # TODO:
 # - use XML ISO entities from sgml-common
 Summary:	XML/SGML DocBook DTD 4.1.2
-Summary(pl.UTF-8):   XML/SGML DocBook DTD 4.1.2
+Summary(pl.UTF-8):	XML/SGML DocBook DTD 4.1.2
 %define ver	4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
