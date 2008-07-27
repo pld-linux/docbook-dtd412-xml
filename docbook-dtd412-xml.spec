@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	XML/SGML DocBook DTD 4.1.2
 %define sver	412
 Name:		docbook-dtd%{sver}-xml
 Version:	1.0
-Release:	13
+Release:	14
 License:	Free
 Group:		Applications/Publishing/XML
 URL:		http://www.oasis-open.org/docbook/
