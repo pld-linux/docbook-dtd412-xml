@@ -29,13 +29,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 DocBook is an XML/SGML vocabulary particularly well suited to books
 and papers about computer hardware and software (though it is by no
-means limited to only these applications).
+means limited to only these applications). This package contains
+DocBook 4.1.2 XML DTD.
 
 %description -l pl.UTF-8
 DocBook DTD jest zestawem definicji dokumentów XML/SGML przeznaczonych
 do tworzenia dokumentacji technicznej. Stosowany jest do pisania
 podręczników systemowych, instrukcji jak i wielu innych ciekawych
-rzeczy.
+rzeczy. Ten pakiet zawiera wersję DocBook 4.1.2 XML.
 
 %prep
 %setup -q -c
